@@ -29,7 +29,7 @@ export default {
       list: [],
       active: 1,
       code: null,
-      wordtocode: null
+      wordtocode: new Map()
     }
   },
   watch: {},
@@ -67,12 +67,14 @@ export default {
 </script>
 <style scoped lang='less'>
   .feinuo-index{
-    background-color: rgb(44, 44, 44);
+  background-image: url('/src/images/CSDN.gif');
+  background-repeat: repeat !important;
+  background-color: #0a0a0a !important;
   }
   .tabbar{
     display: flex;
-    height: 99px;
-    width: 40px;
+    height: 18%;
+    width: 3.3%;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
@@ -82,13 +84,13 @@ export default {
     right: 30px;
     a{
       text-align: center;
-      width: 40px;
-      height: 33px;
-      line-height: 33px;
+      width: 100%;
+      height: 33.3%;
+      line-height: 6vh;
       text-decoration: none;
       color: rgb(222, 222, 222);
       border: 1px solid black;
-      font-size: 22px;
+      font-size: 24px;
     }
     a:nth-child(2){
       border-top: none;

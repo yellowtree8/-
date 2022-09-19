@@ -134,12 +134,17 @@ export default {
   .biaoge-index{
     height: 100vh;
     width: 100%;
-    background-color: rgb(44,44, 44);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
     .top{
       width: 100%;
       height: 100px;
-      padding-top: 50px;
+      padding-top: 35px;
       position: relative;
+      display: flex;
+      justify-content: space-around;
       .btn-1{
         position: absolute;
         left: 24%;
@@ -163,15 +168,18 @@ export default {
     }
   }
   .container{
-    height: 500px;
+    width: 90%;
+    height: 80%;
     overflow: auto;
     background-color: rgb(222, 222, 222);
     box-shadow: 0 0 50px rgba(0, 0, 0,0.5);
     margin: 0 auto;
     padding: 0;
-    padding-left: 20px;
+    display: flex;
+    justify-content: center;
   }
     .container table{
+      width: 95%;
     // 让边框合并
     border-collapse: collapse;
   }

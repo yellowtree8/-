@@ -1,6 +1,8 @@
 <template>
     <div class="mazi-container">
-    <a href="javascript:;" @click="drawTree">绘制树</a>
+    <div class="top">
+      <a href="javascript:;" @click="drawTree">绘制树</a>
+    </div>
     <div class="wrap">
       <div id="container" ref="chart"></div>
     </div>
@@ -120,31 +122,34 @@ export default {
   .mazi-container{
     height: 100vh;
     width: 100%;
-    position: relative;
-    background-color: rgb(44, 44, 44);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
   }
   .wrap{
-    height: 540px;
-    width: 1142px;
-    position: absolute;
-    top: 56%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+    height: 85%;
+    width: 90%;
     overflow: auto;
     border: 1px solid black;
     border-radius: 20px;
     background-color: rgb(211, 211, 211);
   }
   #container{
-    width: 1120px;
+    width: 95%;
     // height: 3600px;
   }
+.top{
+  width:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // height: 80px;
+}
 a{
+  position: relative;
   text-decoration: none;
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translate(-50%);
+  display: inline-block;
   font-size: 24px;
   background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4 );
   background-size: 400%;

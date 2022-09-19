@@ -75,20 +75,20 @@ export default {
   .remake-container{
     height: 100vh;
     width: 100%;
-    background-color: rgb(43, 43, 43);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
   }
   .code{
     word-wrap: break-word;
   }
   .code-wrap{
     padding: 10px;
-    width:1142px;
-    max-width: 1142px;
-    height: 250px;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    top: 20px;
+    width:90%;
+    max-width: 90%;
+    height: 40%;
+    max-height: 40%;
     overflow: auto;
     // position: absolute;
     // left: 50%;
@@ -99,13 +99,11 @@ export default {
   }
   .word-wrap{
     padding: 10px;
-    width:1142px;
-    max-width: 1142px;
-    height: 250px;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    top: 370px;
+    width:90%;
+    max-width: 90%;
+    height: 40%;
+    max-height: 40%;
+
     overflow: auto;
     // position: absolute;
     // left: 50%;
@@ -117,13 +115,13 @@ export default {
 a{
   text-decoration: none;
   position: absolute;
-  top: 295px;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%);
+  transform: translate(-50%,-50%);
   font-size: 24px;
   background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4 );
   background-size: 400%;
-  width: 200px;
+  width: 16%;
   height: 50px;
   line-height: 50px;
   text-align: center;
@@ -142,7 +140,7 @@ a::before{
   bottom: -5px;
   background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4 );
   background-size: 400%;
-  // border-radius: 10px;
+  border-radius: 10px;
   filter: blur(20px);
   z-index: -1;
 }

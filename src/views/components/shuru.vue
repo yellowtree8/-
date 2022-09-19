@@ -1,8 +1,8 @@
 <template>
     <div class="shuru-index">
       <div class="wrap">
+        <div class="tishi"><span>上传txt文件进行编码：</span></div>
         <div class="upload">
-          <span style="font-size: 20px;color: rgb(222,222,222)">上传文件：</span>
           <input ref="txtipt" type="file" name="upload" id="file" @change="onChange" accept=".txt">
           <label for="file">+</label>
         </div>    
@@ -13,9 +13,7 @@
           <span v-else>暂无文件</span>
         </div>  
       </div>
-      <div class="tips" v-show="!isfile">
-        <span>请导入一个txt文件</span>
-      </div>
+
       <div class="chart-wrap">
         <div class="mychart" ref="mychart"></div>
       </div>
@@ -139,22 +137,42 @@ export default {
 <style scoped lang='less'>
 .shuru-index{
   height: 100vh;
-  background-color: rgb(44, 44, 44);
+  background-image: url('/src/images/CSDN.gif');
+  background-repeat: repeat !important;
+  background-color: #0a0a0a !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 .wrap{
-  position: relative;
-  margin-left: 200px;
-  padding-top: 20px;
+  flex-basis: 80px;
+  height: 80px;
+  // position: relative;
+  // margin-left: 200px;
+  // padding-top: 20px;
   // display: inline-block;
   transition: 1s;
-  width: 180px;
+  width: 400px;
+  display: flex;
+  justify-content: left;
 }
 .wrap:hover{
-  width: 270px;
+  width: 380px;
 }
 .wrap:hover .detail{
   opacity: 1;
 
+}
+.tishi{
+  width: 250px;
+  height: 80px;
+  line-height: 80px;
+  font-size: 20px;
+  color: rgb(222,222,222);
+  span{
+
+  }
 }
   #file{position: absolute;clip: rect(0,0,0,0);}
   .upload label{
@@ -172,17 +190,7 @@ export default {
       border-radius: 4px;
   }
 
-  .tips{
-    position: absolute;
-    color: white;
-    right: 570px;
-    top: 40px;
-    width: 250px;
-    border: 1px solid white;
-    font-size: 24px;
-    border-radius: 5px;
-    text-align: center;
-  }
+
 
 
   .detail{
@@ -192,9 +200,9 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 20px;
-    left: 180px;
+    // position: absolute;
+    // top: 20px;
+    // left: 285px;
     width: 80px;
     height: 80px;
     border: 1px solid #00a5e0;
@@ -211,20 +219,25 @@ export default {
     }
   }
   .chart-wrap{
-    width: 1142px;
-    height: 500px;
+    width: 90%;
+    height: 80%;
     background-color: rgb(211, 211, 211);
     border: 1px solid black;
-    position: absolute;
-    left: 50%;
-    margin-top: 10px;
-    transform: translate(-50%);
+    // position: absolute;
+    // left: 50%;
+    // margin-top: 10px;
+    // transform: translate(-50%);
     border-radius: 50px;
     display: flex;
     justify-content: center;
   }
   .mychart{
     width: 90%;
-    height: 500px;
+    height: 100%;
+  }
+  @media (max-width: 765px){
+    .chart-wrap{
+      width: 500px;
+    }
   }
 </style>

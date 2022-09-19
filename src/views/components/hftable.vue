@@ -110,6 +110,9 @@ export default {
   .hfmtable-container{
     height: 100vh;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
   }
 *{
   box-sizing: border-box;
@@ -129,18 +132,19 @@ export default {
       }
     }
   .container{
-    height: 500px;
+    height: 80%;
+    width: 90%;
     overflow: auto;
     background-color: rgb(222, 222, 222);
     box-shadow: 0 0 50px rgba(0, 0, 0,0.5);
     margin: 0 auto;
     padding: 0;
     border: 1px solid black;
-    border-radius: 30px;
     display: flex;
     justify-content: center;
   }
     .container table{
+      width: 95%;
     // 让边框合并
     border-collapse: collapse;
   }

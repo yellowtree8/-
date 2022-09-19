@@ -1,22 +1,22 @@
 <template>
     <div class="dianming-index">
-      <div class="wrap">
-        <div class="upload">
-          <span style="font-size: 20px;color: rgb(222,222,222)">上传点名册：</span>
-          <input ref="txtipt" type="file" name="upload" id="file" @change="importf(this.$refs.txtipt)" accept=".xlsx">
-          <label for="file">+</label>
-        </div>    
-        <div class="detail">
-          <i class="iconfont icon-wenbenwenjian" v-if="isfile"></i>
-          <i class="iconfont icon-zanwuxinxi" v-else></i>
-          <span v-if="isfile">{{filename}}</span>
-          <span v-else>暂无文件</span>
-        </div>  
+      <div class="top">
+        <div class="wrap">
+          <span class="tishi">上传点名册(.xlsx)：</span>
+          <div class="upload">
+          
+            <input ref="txtipt" type="file" name="upload" id="file" @change="importf(this.$refs.txtipt)" accept=".xlsx">
+            <label for="file">+</label>
+          </div>    
+          <div class="detail">
+            <i class="iconfont icon-wenbenwenjian" v-if="isfile"></i>
+            <i class="iconfont icon-zanwuxinxi" v-else></i>
+            <span v-if="isfile">{{filename}}</span>
+            <span v-else>暂无文件</span>
+          </div>  
+        </div> 
+        <a href="javascript:;" @click="onCall">点名</a>
       </div>
-      <div class="tips" v-show="!isfile">
-        <span>请导入一个xlsx文件</span>
-      </div>    
-      <a href="javascript:;" @click="onCall">点名</a>
       <div class="data-wrap">
         <div class="rectangle" :class="isgo?'active':''" :style="letsgo" @animationend="onEnd">
           <div class="rec-item" v-for="item in cur" :key="item">
@@ -25,7 +25,7 @@
           </div>
 
         </div>
-        <div class="username" ref="listwrap" :class="isshow?'username-active':''" @scroll="onScroll">
+        <div class="username" ref="listwrap" :class="isshow?'username-active':''" @mousewheel="onwheel" @scroll="onScroll">
           <div class="useritem" v-for="(item,index) in list" :key="index">
             <span>{{item.学号}}</span>
             <span>{{item.姓名}}</span>
@@ -52,7 +52,8 @@ export default {
       letsgo: {},
       isgo: true,
       isshow: false,
-      filename: ''
+      filename: '',
+      a: -1
 
     }
   },
@@ -62,31 +63,43 @@ export default {
   computed: {
   },
   methods: {
-    onScroll (e){
+    onScroll (e){ 
       var father = this.$refs.listwrap
-      if(father.scrollHeight-father.scrollTop == father.clientHeight)
+      if(father.scrollHeight-father.scrollTop==father.clientHeight)
       {
         father.scrollTop = 0
+
       }
-      if(father.scrollTop%50==0)
-      {
-        var a = father.scrollTop/50
-        this.cur = this.list.slice(a,a+6)
-      }
+
+        if(this.a == Math.round(father.scrollTop/50))
+        {
+          return
+        } else{
+          this.a = Math.round(father.scrollTop/50)
+          this.cur = this.list.slice(this.a,this.a+6)
+        }
+        
+      // if(father.scrollTop%50==0)
+      // {
+      //   var a = father.scrollTop/50
+      //   this.cur = this.list.slice(a,a+6)
+      // }
     },
     onEnd(){
       this.isgo = false
     },
     onCall(){
+      var father = this.$refs.listwrap
       var len = this.list.length-6
       var duration = Math.floor(Math.random()*len)+len
       this.isgo = true
       this.letsgo.animationDuration= duration*100+'ms'
       this.letsgo.animationPlayState = 'running'
-      var father = this.$refs.listwrap
+      
       var temp = 0
       var timer = setInterval(()=>{
-        father.scrollTop+=50
+        console.log(father.scrollTop)
+        father.scrollTop = Math.round((father.scrollTop+50)/50)*50
         temp += 1
         if(duration==temp)
         {
@@ -147,35 +160,40 @@ export default {
 <style scoped lang='less'>
   .dianming-index{
    height: 100vh;
-   background-color: rgb(44, 44, 44);
+  background-image: url('/src/images/CSDN.gif');
+  background-repeat: repeat !important;
+  background-color: #0a0a0a !important;
          perspective: 800px;
+         display: flex;
+         flex-direction: column;
+         justify-content: space-around;
+         align-items: center;
+  }
+  .top{
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
 .wrap{
-  position: relative;
-  margin-left: 200px;
-  padding-top: 20px;
-  // display: inline-block;
+  margin-right: 100px;
+
   transition: 1s;
-  width: 200px;
+  width: 400px;
+  display: flex;
+  height: 80px;
+  justify-content: center;
+  .tishi{
+    font-size: 20px;
+    color: rgb(222,222,222);
+    line-height: 80px;
+  }
 }
-.wrap:hover{
-  width: 270px;
-}
+
 .wrap:hover .detail{
   opacity: 1;
 
 }
-  .tips{
-    position: absolute;
-    color: white;
-    right: 570px;
-    top: 40px;
-    width: 250px;
-    border: 1px solid white;
-    font-size: 24px;
-    border-radius: 5px;
-    text-align: center;
-  }
 
   #file{position: absolute;clip: rect(0,0,0,0);}
   .upload label{
@@ -199,9 +217,9 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: absolute;
-    top: 20px;
-    left: 200px;
+    // position: absolute;
+    // top: 20px;
+    // left: 200px;
     width: 80px;
     height: 80px;
     border: 1px solid #00a5e0;
@@ -219,9 +237,9 @@ export default {
   }
 a{
   text-decoration: none;
-  position: absolute;
-  top: 40px;
-  left: 70%;
+  // position: absolute;
+  // top: 30px;
+  // margin-left: 700px;
   transform: translate(-50%);
   font-size: 24px;
   background: linear-gradient(90deg,#03a9f4,#f441a5,#ffeb3b,#03a9f4 );
@@ -266,10 +284,8 @@ a:hover::before{
   .data-wrap{
     background-color: rgb(211, 211, 211);
     border-radius: 40px;
-    width: 1000px;
-    height: 500px;
-    margin: 0 auto;
-    margin-top: 10px;
+    width: 80%;
+    height: 80%;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -358,12 +374,12 @@ a:hover::before{
   }
   .username::-webkit-scrollbar { width: 0 !important }
   .useritem{
-    box-sizing: border-box;
+    // box-sizing: border-box;
     height: 50px;
     line-height: 50px;
     // padding-left: 10px;
     width: 400px;
-    border: 1px solid black;
+    // border: 1px solid black;
     span{
       padding: 0 10px;
     }

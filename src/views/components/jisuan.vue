@@ -26,7 +26,9 @@ export default {
 <style scoped lang='less'>
   .jisuan-index{
     height: 100vh;
-    background-color: rgb(44, 44, 44);
+  background-image: url('/src/images/CSDN.gif');
+  background-repeat: repeat !important;
+  background-color: #0a0a0a !important;
     display: flex;
     justify-content: center;
     align-items: center;

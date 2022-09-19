@@ -149,6 +149,7 @@ export default {
         width: 100%;
         display: flex;
         justify-content: space-between;
+        border: none;
         button{
           width: 120px;
           height: 36px;

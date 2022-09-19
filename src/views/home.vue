@@ -43,7 +43,7 @@ export default {
       top: 0px;
       left: 0px;
       height: 100vh;
-      width: 50px;
+      width: 4%;
       background-color: rgb(17, 24, 39);
       display: flex;
       flex-direction: column;
@@ -60,11 +60,17 @@ export default {
       border-radius: 5px;
       position: relative;
       color: rgb(160, 160, 175);
+      display: flex;
+      align-items: center;
     }
     .box i{
+      display: block;
+      height: 40px;
+      width: 40px;
+      text-align: center;
       font-size: 30px;
-      position: absolute;
-      margin: 24px 0 0 7px;
+      margin-left: 10px;
+      line-height: 40px;
     }
     .box:nth-child(4)::before{
         content: '';
@@ -77,8 +83,8 @@ export default {
     }
     .box span{
         position: relative;
-        top: 22px;
-        left: 80px;
+        // top: 22px;
+        left: 60px;
         font: 500 20px '';
         opacity: 0;
         transition: .1s;

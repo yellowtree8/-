@@ -6,7 +6,7 @@
       <div class="tabbar">
         <a href="javascript:;" @click="active=1" class="item iconfont icon-zhifangtu" :class="active==1?'item-active':''"></a>
         <a href="javascript:;" @click="active=2" class="item iconfont icon-shuzhuangtu_o" :class="active==2?'item-active':''"></a>
-        <a href="javascript:;" @click="active=3" class="item iconfont icon-jiema"  :class="active==3?'item-active':''"></a>
+        <a href="javascript:;" @click="active=3" class="item iconfont icon-jiema" :class="active==3?'item-active':''"></a>
       </div>
     </div>
 </template>
@@ -29,7 +29,7 @@ export default {
       list: [],
       active: 1,
       code: null,
-      wordtocode: null
+      wordtocode: new Map()
     }
   },
   watch: {},
@@ -67,13 +67,15 @@ export default {
 }
 </script>
 <style scoped lang='less'>
-  // .xn-index{
-  //   padding-right: 40px;
-  // }
+  .xn-index{
+  background-image: url('/src/images/CSDN.gif');
+  background-repeat: repeat !important;
+  background-color: #0a0a0a !important;
+  }
   .tabbar{
     display: flex;
-    height: 99px;
-    width: 40px;
+    height: 18%;
+    width: 3.3%;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
@@ -83,9 +85,9 @@ export default {
     right: 30px;
     a{
       text-align: center;
-      width: 40px;
-      height: 33px;
-      line-height: 33px;
+      width: 100%;
+      height: 33.3%;
+      line-height: 6vh;
       text-decoration: none;
       color: rgb(222, 222, 222);
       border: 1px solid black;
